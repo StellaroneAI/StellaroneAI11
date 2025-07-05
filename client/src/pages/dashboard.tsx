@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { CustomLineChart, CustomPieChart } from "@/components/ui/charts";
 import { revenueData, claimStatusData, recentActivity } from "@/lib/mock-data";
 import { DollarSign, FileText, TrendingUp, Clock, Download } from "lucide-react";
+import AiChat from "@/components/ai/ai-chat";
+import AiInsights from "@/components/ai/ai-insights";
 
 export default function Dashboard() {
   const kpiData = [
@@ -124,28 +126,34 @@ export default function Dashboard() {
           </Card>
         </div>
 
-        {/* Recent Activity */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-blue-900">Recent Activity</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              {recentActivity.map((activity) => (
-                <div key={activity.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
-                  <div className="flex items-center space-x-3">
-                    {getActivityIcon(activity.type)}
-                    <div>
-                      <p className="font-medium">{activity.message}</p>
-                      <p className="text-sm text-gray-500">{activity.details}</p>
+        {/* AI-Powered Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+          <AiChat />
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-blue-900">Recent Activity</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                {recentActivity.map((activity) => (
+                  <div key={activity.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                    <div className="flex items-center space-x-3">
+                      {getActivityIcon(activity.type)}
+                      <div>
+                        <p className="font-medium">{activity.message}</p>
+                        <p className="text-sm text-gray-500">{activity.details}</p>
+                      </div>
                     </div>
+                    <span className="text-sm text-gray-500">{activity.timestamp}</span>
                   </div>
-                  <span className="text-sm text-gray-500">{activity.timestamp}</span>
-                </div>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* AI Insights */}
+        <AiInsights />
       </div>
     </div>
   );

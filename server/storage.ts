@@ -15,6 +15,8 @@ import {
   type ContactRequest,
   type InsertContactRequest,
 } from "@shared/schema";
+import { db } from "./db";
+import { eq } from "drizzle-orm";
 
 export interface IStorage {
   getUser(id: number): Promise<User | undefined>;
@@ -117,4 +119,73 @@ export class MemStorage implements IStorage {
   }
 }
 
-export const storage = new MemStorage();
+// Database Storage Implementation
+export class DatabaseStorage implements IStorage {
+  async getUser(id: number): Promise<User | undefined> {
+    const [user] = await db.select().from(users).where(eq(users.id, id));
+    return user || undefined;
+  }
+
+  async getUserByUsername(username: string): Promise<User | undefined> {
+    const [user] = await db.select().from(users).where(eq(users.username, username));
+    return user || undefined;
+  }
+
+  async createUser(insertUser: InsertUser): Promise<User> {
+    const [user] = await db
+      .insert(users)
+      .values(insertUser)
+      .returning();
+    return user;
+  }
+
+  async getClaims(): Promise<Claim[]> {
+    return await db.select().from(claims);
+  }
+
+  async createClaim(insertClaim: InsertClaim): Promise<Claim> {
+    const [claim] = await db
+      .insert(claims)
+      .values(insertClaim)
+      .returning();
+    return claim;
+  }
+
+  async getPatients(): Promise<Patient[]> {
+    return await db.select().from(patients);
+  }
+
+  async createPatient(insertPatient: InsertPatient): Promise<Patient> {
+    const [patient] = await db
+      .insert(patients)
+      .values(insertPatient)
+      .returning();
+    return patient;
+  }
+
+  async getRevenueMetrics(): Promise<RevenueMetric[]> {
+    return await db.select().from(revenueMetrics);
+  }
+
+  async createRevenueMetric(insertMetric: InsertRevenueMetric): Promise<RevenueMetric> {
+    const [metric] = await db
+      .insert(revenueMetrics)
+      .values(insertMetric)
+      .returning();
+    return metric;
+  }
+
+  async getContactRequests(): Promise<ContactRequest[]> {
+    return await db.select().from(contactRequests);
+  }
+
+  async createContactRequest(insertRequest: InsertContactRequest): Promise<ContactRequest> {
+    const [request] = await db
+      .insert(contactRequests)
+      .values(insertRequest)
+      .returning();
+    return request;
+  }
+}
+
+export const storage = new DatabaseStorage();

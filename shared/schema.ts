@@ -1,4 +1,5 @@
 import { pgTable, text, serial, integer, boolean, timestamp, decimal, jsonb } from "drizzle-orm/pg-core";
+import { relations } from "drizzle-orm";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -91,3 +92,27 @@ export type RevenueMetric = typeof revenueMetrics.$inferSelect;
 
 export type InsertContactRequest = z.infer<typeof insertContactRequestSchema>;
 export type ContactRequest = typeof contactRequests.$inferSelect;
+
+// Define relationships between tables
+export const usersRelations = relations(users, ({ many }) => ({
+  claims: many(claims),
+}));
+
+export const claimsRelations = relations(claims, ({ one }) => ({
+  user: one(users, {
+    fields: [claims.patientName],
+    references: [users.username],
+  }),
+}));
+
+export const patientsRelations = relations(patients, ({ many }) => ({
+  claims: many(claims),
+}));
+
+export const revenueMetricsRelations = relations(revenueMetrics, ({ one }) => ({
+  // Can add relationships to other tables as needed
+}));
+
+export const contactRequestsRelations = relations(contactRequests, ({ one }) => ({
+  // Contact requests are standalone for now
+}));

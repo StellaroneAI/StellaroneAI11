@@ -13,6 +13,7 @@ export default function Navbar() {
     { name: "Dashboard", href: "/dashboard" },
     { name: "Modules", href: "/modules" },
     { name: "Analytics", href: "/analytics" },
+    { name: "AI Features", href: "/ai-features" },
     { name: "Team", href: "/team" },
     { name: "Contact", href: "/contact" },
   ];

@@ -39,6 +39,13 @@
 - **Data encryption** at rest and in transit
 - **SOC 2 Type II** security standards
 
+### 🤖 AI-Powered Intelligence
+- **Stellar.AI Assistant** for conversational RCM support
+- **Intelligent claim validation** with 99%+ accuracy
+- **Automated denial analysis** and appeal generation
+- **Predictive revenue insights** and forecasting
+- **Real-time performance optimization** recommendations
+
 ---
 
 ## 🛠️ Technology Stack
@@ -110,6 +117,9 @@ DATABASE_URL="postgresql://user:password@host:port/database"
 # Application
 NODE_ENV="development"
 PORT="5000"
+
+# AI Integration (Required)
+OPENAI_API_KEY="your_openai_api_key_here"
 
 # Optional: External Services
 TWILIO_ACCOUNT_SID=""

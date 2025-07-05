@@ -9,6 +9,7 @@ import Home from "@/pages/home";
 import Dashboard from "@/pages/dashboard";
 import Modules from "@/pages/modules";
 import Analytics from "@/pages/analytics";
+import AiFeatures from "@/pages/ai-features";
 import Team from "@/pages/team";
 import Contact from "@/pages/contact";
 import NotFound from "@/pages/not-found";
@@ -23,6 +24,7 @@ function Router() {
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/modules" component={Modules} />
           <Route path="/analytics" component={Analytics} />
+          <Route path="/ai-features" component={AiFeatures} />
           <Route path="/team" component={Team} />
           <Route path="/contact" component={Contact} />
           <Route component={NotFound} />
