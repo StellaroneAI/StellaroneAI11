@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "wouter";
-import { Play, Calendar, DollarSign, FileText, TrendingUp, Clock } from "lucide-react";
+import { Play, Calendar, DollarSign, FileText, TrendingUp, Clock, Bot, Brain, Zap, Shield } from "lucide-react";
 
 export default function Home() {
   return (
@@ -71,20 +71,106 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="text-3xl font-bold text-blue-600 mb-2">98%</div>
-              <div className="text-gray-600">First Pass Claim Rate</div>
+              <div className="text-gray-600">AI-Powered Accuracy</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-green-600 mb-2">60%</div>
-              <div className="text-gray-600">Denial Reduction</div>
+              <div className="text-gray-600">Smart Denial Reduction</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-orange-600 mb-2">95%</div>
-              <div className="text-gray-600">Collection Efficiency</div>
+              <div className="text-gray-600">Intelligent Collection</div>
             </div>
             <div className="text-center">
               <div className="text-3xl font-bold text-blue-900 mb-2">80%</div>
-              <div className="text-gray-600">Task Automation</div>
+              <div className="text-gray-600">AI Task Automation</div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* AI Features Section */}
+      <section className="py-20 bg-gradient-to-br from-purple-50 to-blue-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="flex items-center justify-center mb-6">
+              <Bot className="h-12 w-12 text-purple-600 mr-3" />
+              <h2 className="text-4xl font-bold text-blue-900">Powered by Stellar.AI</h2>
+            </div>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Experience the next generation of healthcare RCM with intelligent automation and predictive analytics
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <Card className="bg-white shadow-lg hover:shadow-xl transition-shadow border-0">
+              <CardContent className="p-8 text-center">
+                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Bot className="h-8 w-8 text-purple-600" />
+                </div>
+                <h3 className="text-xl font-semibold mb-4">AI Assistant</h3>
+                <p className="text-gray-600 mb-4">24/7 conversational AI for real-time RCM support and guidance</p>
+                <Link href="/ai-features">
+                  <Button variant="outline" className="text-purple-600 border-purple-600 hover:bg-purple-50">
+                    Try Now
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-white shadow-lg hover:shadow-xl transition-shadow border-0">
+              <CardContent className="p-8 text-center">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Brain className="h-8 w-8 text-blue-600" />
+                </div>
+                <h3 className="text-xl font-semibold mb-4">Smart Analytics</h3>
+                <p className="text-gray-600 mb-4">Predictive insights and revenue optimization recommendations</p>
+                <Link href="/ai-features">
+                  <Button variant="outline" className="text-blue-600 border-blue-600 hover:bg-blue-50">
+                    Explore
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-white shadow-lg hover:shadow-xl transition-shadow border-0">
+              <CardContent className="p-8 text-center">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Zap className="h-8 w-8 text-green-600" />
+                </div>
+                <h3 className="text-xl font-semibold mb-4">Auto Validation</h3>
+                <p className="text-gray-600 mb-4">Intelligent claim validation with 99%+ accuracy rate</p>
+                <Link href="/ai-features">
+                  <Button variant="outline" className="text-green-600 border-green-600 hover:bg-green-50">
+                    Learn More
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+
+            <Card className="bg-white shadow-lg hover:shadow-xl transition-shadow border-0">
+              <CardContent className="p-8 text-center">
+                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Shield className="h-8 w-8 text-orange-600" />
+                </div>
+                <h3 className="text-xl font-semibold mb-4">Denial Prevention</h3>
+                <p className="text-gray-600 mb-4">AI-powered denial analysis and automated appeal generation</p>
+                <Link href="/ai-features">
+                  <Button variant="outline" className="text-orange-600 border-orange-600 hover:bg-orange-50">
+                    View Demo
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="text-center mt-12">
+            <Link href="/ai-features">
+              <Button className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 text-lg">
+                <Bot className="mr-2 h-5 w-5" />
+                Experience All AI Features
+              </Button>
+            </Link>
           </div>
         </div>
       </section>

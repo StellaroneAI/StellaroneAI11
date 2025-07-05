@@ -9,7 +9,7 @@ import {
   payerPerformanceData, 
   topServices 
 } from "@/lib/mock-data";
-import { TrendingUp, TrendingDown, DollarSign, FileText, Clock } from "lucide-react";
+import { TrendingUp, TrendingDown, DollarSign, FileText, Clock, Bot, Brain, Zap, BarChart3 } from "lucide-react";
 
 export default function Analytics() {
   const [selectedTab, setSelectedTab] = useState("revenue");
@@ -83,11 +83,12 @@ export default function Analytics() {
 
             {/* Detailed Analytics Tabs */}
             <Tabs value={selectedTab} onValueChange={setSelectedTab} className="w-full">
-              <TabsList className="grid w-full grid-cols-4">
+              <TabsList className="grid w-full grid-cols-5">
                 <TabsTrigger value="revenue">Revenue Analysis</TabsTrigger>
                 <TabsTrigger value="claims">Claims Performance</TabsTrigger>
                 <TabsTrigger value="denials">Denial Analysis</TabsTrigger>
                 <TabsTrigger value="payers">Payer Performance</TabsTrigger>
+                <TabsTrigger value="ai-insights">AI Insights</TabsTrigger>
               </TabsList>
 
               <TabsContent value="revenue" className="space-y-8">
@@ -230,6 +231,164 @@ export default function Analytics() {
                         color="#FF6B35"
                         height={300}
                       />
+                    </CardContent>
+                  </Card>
+                </div>
+              </TabsContent>
+
+              <TabsContent value="ai-insights" className="space-y-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                  <Card className="bg-gradient-to-br from-purple-50 to-blue-50 border-purple-200">
+                    <CardHeader>
+                      <CardTitle className="flex items-center text-purple-900">
+                        <Brain className="mr-2 h-5 w-5" />
+                        AI Revenue Predictions
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-4">
+                        <div className="bg-white p-4 rounded-lg">
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="text-sm font-medium">Next Month Forecast</span>
+                            <span className="text-green-600 font-bold">$965,000</span>
+                          </div>
+                          <div className="w-full bg-gray-200 rounded-full h-2">
+                            <div className="bg-green-600 h-2 rounded-full" style={{ width: "82%" }}></div>
+                          </div>
+                          <p className="text-xs text-gray-600 mt-1">82% confidence based on historical patterns</p>
+                        </div>
+                        <div className="bg-white p-4 rounded-lg">
+                          <div className="flex items-center justify-between mb-2">
+                            <span className="text-sm font-medium">Q4 Revenue Target</span>
+                            <span className="text-blue-600 font-bold">$2.8M</span>
+                          </div>
+                          <div className="w-full bg-gray-200 rounded-full h-2">
+                            <div className="bg-blue-600 h-2 rounded-full" style={{ width: "76%" }}></div>
+                          </div>
+                          <p className="text-xs text-gray-600 mt-1">On track to exceed target by 12%</p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="bg-gradient-to-br from-orange-50 to-red-50 border-orange-200">
+                    <CardHeader>
+                      <CardTitle className="flex items-center text-orange-900">
+                        <Zap className="mr-2 h-5 w-5" />
+                        Smart Recommendations
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-3">
+                        <div className="bg-white p-3 rounded-lg border-l-4 border-blue-500">
+                          <p className="text-sm font-medium text-blue-900">Focus on Blue Cross Blue Shield</p>
+                          <p className="text-xs text-gray-600">17% faster payment processing detected</p>
+                        </div>
+                        <div className="bg-white p-3 rounded-lg border-l-4 border-green-500">
+                          <p className="text-sm font-medium text-green-900">Optimize CPT 99213 Claims</p>
+                          <p className="text-xs text-gray-600">98.5% approval rate opportunity identified</p>
+                        </div>
+                        <div className="bg-white p-3 rounded-lg border-l-4 border-purple-500">
+                          <p className="text-sm font-medium text-purple-900">Automate Prior Auth Process</p>
+                          <p className="text-xs text-gray-600">Could reduce processing time by 3.2 days</p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center text-blue-900">
+                        <BarChart3 className="mr-2 h-5 w-5" />
+                        AI Accuracy Metrics
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-4">
+                        <div className="flex items-center justify-between">
+                          <span className="text-sm">Claim Validation</span>
+                          <span className="font-bold text-green-600">99.2%</span>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-sm">Denial Prediction</span>
+                          <span className="font-bold text-blue-600">96.8%</span>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-sm">Revenue Forecasting</span>
+                          <span className="font-bold text-purple-600">94.5%</span>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-sm">Pattern Recognition</span>
+                          <span className="font-bold text-orange-600">97.1%</span>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center text-green-900">
+                        <TrendingUp className="mr-2 h-5 w-5" />
+                        Performance Improvements
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-4">
+                        <div>
+                          <div className="flex items-center justify-between mb-1">
+                            <span className="text-sm">Processing Speed</span>
+                            <span className="text-green-600 font-bold">+340%</span>
+                          </div>
+                          <div className="w-full bg-gray-200 rounded-full h-2">
+                            <div className="bg-green-600 h-2 rounded-full" style={{ width: "85%" }}></div>
+                          </div>
+                        </div>
+                        <div>
+                          <div className="flex items-center justify-between mb-1">
+                            <span className="text-sm">Error Reduction</span>
+                            <span className="text-blue-600 font-bold">-89%</span>
+                          </div>
+                          <div className="w-full bg-gray-200 rounded-full h-2">
+                            <div className="bg-blue-600 h-2 rounded-full" style={{ width: "89%" }}></div>
+                          </div>
+                        </div>
+                        <div>
+                          <div className="flex items-center justify-between mb-1">
+                            <span className="text-sm">Cost Savings</span>
+                            <span className="text-purple-600 font-bold">$2.3M</span>
+                          </div>
+                          <div className="w-full bg-gray-200 rounded-full h-2">
+                            <div className="bg-purple-600 h-2 rounded-full" style={{ width: "92%" }}></div>
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="bg-gradient-to-br from-blue-50 to-purple-50 border-blue-200">
+                    <CardHeader>
+                      <CardTitle className="flex items-center text-blue-900">
+                        <Bot className="mr-2 h-5 w-5" />
+                        AI Assistant Usage
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-4">
+                        <div className="text-center">
+                          <div className="text-2xl font-bold text-blue-600 mb-1">1,247</div>
+                          <div className="text-sm text-gray-600">Queries This Month</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="text-2xl font-bold text-green-600 mb-1">98.3%</div>
+                          <div className="text-sm text-gray-600">User Satisfaction</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="text-2xl font-bold text-purple-600 mb-1">4.7s</div>
+                          <div className="text-sm text-gray-600">Avg Response Time</div>
+                        </div>
+                      </div>
                     </CardContent>
                   </Card>
                 </div>

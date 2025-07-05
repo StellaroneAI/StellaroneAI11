@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Globe, MapPin } from "lucide-react";
+import { Mail, Globe, MapPin, Bot, Zap, MessageSquare } from "lucide-react";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -151,25 +151,48 @@ export default function Contact() {
               </CardContent>
             </Card>
 
-            <Card className="shadow-lg">
+            <Card className="shadow-lg bg-gradient-to-br from-purple-50 to-blue-50 border-purple-200">
               <CardHeader>
-                <CardTitle className="text-2xl text-blue-900">Office Locations</CardTitle>
+                <CardTitle className="flex items-center gap-2 text-2xl text-purple-900">
+                  <Bot className="h-6 w-6" />
+                  AI-Powered Instant Support
+                </CardTitle>
               </CardHeader>
-              <CardContent className="space-y-6">
-                <div>
-                  <h4 className="font-semibold text-blue-900 mb-2">🇮🇳 India Operations</h4>
-                  <p className="text-gray-600">
-                    Bengaluru & Jaipur<br />
-                    Serving diagnostic labs, clinics, and hospitals
+              <CardContent className="space-y-4">
+                <div className="bg-white p-4 rounded-lg border-l-4 border-purple-500">
+                  <div className="flex items-center gap-2 mb-2">
+                    <MessageSquare className="h-4 w-4 text-purple-600" />
+                    <span className="font-medium text-purple-900">Smart Query Routing</span>
+                  </div>
+                  <p className="text-sm text-gray-600">
+                    Our AI analyzes your inquiry and routes it to the right specialist automatically
                   </p>
                 </div>
-                <div>
-                  <h4 className="font-semibold text-blue-900 mb-2">🇺🇸 US Operations</h4>
-                  <p className="text-gray-600">
-                    Remote delivery model<br />
-                    HIPAA-ready modules and services
+                
+                <div className="bg-white p-4 rounded-lg border-l-4 border-blue-500">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Zap className="h-4 w-4 text-blue-600" />
+                    <span className="font-medium text-blue-900">Instant Recommendations</span>
+                  </div>
+                  <p className="text-sm text-gray-600">
+                    Get personalized RCM solutions based on your organization's needs
                   </p>
                 </div>
+                
+                <div className="bg-white p-4 rounded-lg border-l-4 border-green-500">
+                  <div className="flex items-center gap-2 mb-2">
+                    <Bot className="h-4 w-4 text-green-600" />
+                    <span className="font-medium text-green-900">24/7 AI Assistant</span>
+                  </div>
+                  <p className="text-sm text-gray-600">
+                    Get immediate answers to common questions about our platform
+                  </p>
+                </div>
+
+                <Button className="w-full bg-purple-600 hover:bg-purple-700 mt-4">
+                  <MessageSquare className="mr-2 h-4 w-4" />
+                  Chat with AI Support
+                </Button>
               </CardContent>
             </Card>
 

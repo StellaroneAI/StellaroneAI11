@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import AiChat from "@/components/ai/ai-chat";
 import AiInsights from "@/components/ai/ai-insights";
+import AiPatientCommunication from "@/components/ai/ai-patient-communication";
 import { 
   Bot, 
   Brain, 
@@ -108,11 +109,12 @@ export default function AiFeatures() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <Tabs value={selectedTab} onValueChange={setSelectedTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-4">
+          <TabsList className="grid w-full grid-cols-5">
             <TabsTrigger value="overview">AI Overview</TabsTrigger>
             <TabsTrigger value="assistant">AI Assistant</TabsTrigger>
             <TabsTrigger value="insights">Revenue Insights</TabsTrigger>
             <TabsTrigger value="validation">Claim Validation</TabsTrigger>
+            <TabsTrigger value="communication">Patient AI</TabsTrigger>
           </TabsList>
 
           <TabsContent value="overview" className="space-y-8 mt-8">
@@ -343,6 +345,14 @@ export default function AiFeatures() {
                 </div>
               </CardContent>
             </Card>
+          </TabsContent>
+
+          <TabsContent value="communication" className="mt-8">
+            <div className="mb-6">
+              <h3 className="text-2xl font-bold text-blue-900 mb-2">AI-Powered Patient Communication</h3>
+              <p className="text-gray-600">Automate personalized patient messaging with intelligent AI that understands context and tone.</p>
+            </div>
+            <AiPatientCommunication />
           </TabsContent>
         </Tabs>
       </div>
