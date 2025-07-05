@@ -24,13 +24,19 @@
   --ring: hsl(20, 14.3%, 4.1%);
   --radius: 0.5rem;
   
-  /* StellarOne Health brand colors */
-  --stellar-blue: hsl(207, 90%, 54%);
+  /* StellarOne Health professional brand colors */
+  --stellar-primary: hsl(207, 90%, 54%);
   --stellar-navy: hsl(207, 100%, 25%);
+  --stellar-deep-blue: hsl(207, 85%, 20%);
+  --stellar-light-blue: hsl(207, 80%, 96%);
   --stellar-green: hsl(152, 100%, 33%);
   --stellar-orange: hsl(14, 100%, 60%);
   --stellar-red: hsl(0, 77%, 58%);
   --stellar-success: hsl(145, 63%, 42%);
+  --stellar-gold: hsl(43, 100%, 50%);
+  --stellar-purple: hsl(271, 91%, 65%);
+  --stellar-gray: hsl(217, 19%, 38%);
+  --stellar-light-gray: hsl(217, 19%, 96%);
 }
 
 .dark {
@@ -67,12 +73,12 @@
 }
 
 @layer utilities {
-  .stellar-blue {
-    color: var(--stellar-blue);
+  .stellar-primary {
+    color: var(--stellar-primary);
   }
   
-  .bg-stellar-blue {
-    background-color: var(--stellar-blue);
+  .bg-stellar-primary {
+    background-color: var(--stellar-primary);
   }
   
   .stellar-navy {
@@ -83,6 +89,22 @@
     background-color: var(--stellar-navy);
   }
   
+  .stellar-deep-blue {
+    color: var(--stellar-deep-blue);
+  }
+  
+  .bg-stellar-deep-blue {
+    background-color: var(--stellar-deep-blue);
+  }
+  
+  .stellar-light-blue {
+    color: var(--stellar-light-blue);
+  }
+  
+  .bg-stellar-light-blue {
+    background-color: var(--stellar-light-blue);
+  }
+  
   .stellar-green {
     color: var(--stellar-green);
   }
@@ -91,27 +113,54 @@
     background-color: var(--stellar-green);
   }
   
-  .stellar-orange {
-    color: var(--stellar-orange);
+  .stellar-gold {
+    color: var(--stellar-gold);
   }
   
-  .bg-stellar-orange {
-    background-color: var(--stellar-orange);
+  .bg-stellar-gold {
+    background-color: var(--stellar-gold);
   }
   
-  .stellar-red {
-    color: var(--stellar-red);
+  .stellar-purple {
+    color: var(--stellar-purple);
   }
   
-  .bg-stellar-red {
-    background-color: var(--stellar-red);
+  .bg-stellar-purple {
+    background-color: var(--stellar-purple);
   }
   
-  .stellar-success {
-    color: var(--stellar-success);
+  .stellar-gray {
+    color: var(--stellar-gray);
   }
   
-  .bg-stellar-success {
-    background-color: var(--stellar-success);
+  .bg-stellar-gray {
+    background-color: var(--stellar-gray);
+  }
+  
+  .professional-shadow {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+  
+  .professional-shadow-lg {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+  
+  .professional-shadow-xl {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+  
+  .gradient-professional {
+    background: linear-gradient(135deg, var(--stellar-deep-blue) 0%, var(--stellar-navy) 100%);
+  }
+  
+  .gradient-accent {
+    background: linear-gradient(135deg, var(--stellar-primary) 0%, var(--stellar-purple) 100%);
+  }
+  
+  .text-gradient {
+    background: linear-gradient(135deg, var(--stellar-primary) 0%, var(--stellar-purple) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 }

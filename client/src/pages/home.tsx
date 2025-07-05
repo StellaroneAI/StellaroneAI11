@@ -7,29 +7,59 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-blue-600 to-blue-900 text-white">
-        <div className="absolute inset-0 bg-black opacity-10"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+      <section className="relative gradient-professional text-white overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-black/20 via-transparent to-purple-900/20"></div>
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-400/10 rounded-full blur-3xl"></div>
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
+            <div className="mb-6">
+              <span className="bg-white/10 backdrop-blur-sm border border-white/20 text-white px-4 py-2 rounded-full text-sm font-medium">
+                🚀 Trusted by 500+ Healthcare Providers
+              </span>
+            </div>
+            <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight">
               Next-Gen AI-Powered
               <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-green-200">
+              <span className="text-gradient">
                 Revenue Cycle Management
               </span>
             </h1>
-            <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-3xl mx-auto">
-              Building the most intelligent, transparent, and efficient RCM platform for India & US healthcare providers
+            <p className="text-xl md:text-2xl text-blue-100 mb-12 max-w-4xl mx-auto leading-relaxed">
+              Building the most intelligent, transparent, and efficient RCM platform for India & US healthcare providers. 
+              <strong className="text-white">No money left on the table.</strong>
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3 text-lg">
-                <Play className="mr-2 h-5 w-5" />
-                Watch Demo
+            <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
+              <Button className="bg-white text-blue-900 hover:bg-gray-100 px-10 py-4 text-lg font-semibold professional-shadow-lg">
+                <Play className="mr-3 h-5 w-5" />
+                Watch Live Demo
               </Button>
-              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-3 text-lg">
-                <Calendar className="mr-2 h-5 w-5" />
+              <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-blue-900 px-10 py-4 text-lg font-semibold">
+                <Calendar className="mr-3 h-5 w-5" />
                 Schedule Consultation
               </Button>
+            </div>
+            
+            {/* Trust Indicators */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white/80">
+              <div>
+                <div className="text-3xl font-bold text-white mb-1">98%</div>
+                <div className="text-sm">First Pass Rate</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-white mb-1">$2.8M+</div>
+                <div className="text-sm">Revenue Processed</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-white mb-1">60%</div>
+                <div className="text-sm">Denial Reduction</div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold text-white mb-1">24/7</div>
+                <div className="text-sm">AI Monitoring</div>
+              </div>
             </div>
           </div>
         </div>
