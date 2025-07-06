@@ -337,12 +337,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
-**Inspired by healthcare innovation leaders:**
-- ENTER.Health
-- AKASA
-- Collectly
-- All pioneers making healthcare less broken
-
 ---
 
 <div align="center">
