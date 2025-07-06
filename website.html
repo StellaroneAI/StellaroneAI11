@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StellarOne Health - AI-Powered Revenue Cycle Management</title>
+    <meta name="description" content="Transform your healthcare revenue cycle with AI. Reduce denials by 95%, accelerate collections, and boost revenue with StellarOne Health's RCM platform.">
+    
+    <!-- Open Graph tags -->
+    <meta property="og:title" content="StellarOne Health - AI-Powered RCM Platform">
+    <meta property="og:description" content="The only RCM platform that automates claims, reduces denials by 95%, and gets you paid faster.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://stellarone.health">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Variables */
+        :root {
+            --color-slate-50: #f8fafc;
+            --color-slate-100: #f1f5f9;
+            --color-slate-600: #475569;
+            --color-slate-800: #1e293b;
+            --color-blue-50: #eff6ff;
+            --color-blue-600: #2563eb;
+            --color-blue-700: #1d4ed8;
+            --color-indigo-50: #eef2ff;
+            --color-indigo-600: #4f46e5;
+            --color-green-50: #f0fdf4;
+            --color-green-600: #16a34a;
+            --color-amber-50: #fffbeb;
+            --color-amber-600: #d97706;
+            --color-white: #ffffff;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        /* Reset & Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(to bottom right, var(--color-slate-50), var(--color-white), var(--color-blue-50));
+            color: var(--color-slate-800);
+            line-height: 1.6;
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--color-slate-100);
+            box-shadow: var(--shadow-sm);
+            z-index: 50;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 4rem;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .brand-icon {
+            position: relative;
+            color: var(--color-blue-600);
+        }
+
+        .brand-dot {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            width: 8px;
+            height: 8px;
+            background: linear-gradient(to right, var(--color-blue-600), var(--color-indigo-600));
+            border-radius: 50%;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-slate-800);
+        }
+
+        .brand-tagline {
+            font-size: 0.75rem;
+            color: var(--color-slate-600);
+            font-weight: 500;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 0.25rem;
+        }
+
+        .nav-link {
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            color: var(--color-slate-600);
+            font-weight: 500;
+            border-radius: 0.5rem;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--color-blue-600);
+            background: linear-gradient(to right, var(--color-blue-50), var(--color-indigo-50));
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .nav-toggle span {
+            width: 20px;
+            height: 2px;
+            background: var(--color-slate-600);
+            transition: all 0.3s;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1.5rem;
+            font-weight: 600;
+            border-radius: 0.75rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.875rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, var(--color-blue-600), var(--color-indigo-600));
+            color: var(--color-white);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(to right, var(--color-blue-700), var(--color-indigo-600));
+            box-shadow: var(--shadow-xl);
+            transform: scale(1.05);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--color-indigo-600);
+            color: var(--color-indigo-600);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--color-indigo-50);
+        }
+
+        .btn-white {
+            background: var(--color-white);
+            color: var(--color-blue-600);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-outline-white {
+            border: 2px solid var(--color-white);
+            color: var(--color-white);
+            background: transparent;
+        }
+
+        .btn-large {
+            padding: 1rem 2rem;
+            font-size: 1.125rem;
+        }
+
+        .btn-full {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            padding-top: 8rem;
+            padding-bottom: 6rem;
+        }
+
+        .hero-content {
+            text-align: center;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--color-green-50);
+            border: 1px solid #bbf7d0;
+            color: #15803d;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #16a34a;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--color-slate-800);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, var(--color-blue-600), var(--color-indigo-600));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-description {
+            font-size: 1.25rem;
+            color: var(--color-slate-600);
+            margin-bottom: 2.5rem;
+            max-width: 48rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 4rem;
+        }
+
+        /* Metrics Grid */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-width: 80rem;
+            margin: 0 auto;
+        }
+
+        .metric-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--color-slate-200);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.2s;
+        }
+
+        .metric-card:hover {
+            box-shadow: var(--shadow-xl);
+            transform: translateY(-2px);
+        }
+
+        .metric-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+        }
+
+        .metric-icon {
+            width: 32px;
+            height: 32px;
+        }
+
+        .metric-icon-green { color: var(--color-green-600); }
+        .metric-icon-blue { color: var(--color-blue-600); }
+        .metric-icon-indigo { color: var(--color-indigo-600); }
+        .metric-icon-amber { color: var(--color-amber-600); }
+
+        .metric-change {
+            font-size: 0.75rem;
+            font-weight: 500;
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+        }
+
+        .metric-change-positive {
+            background: var(--color-green-50);
+            color: var(--color-green-600);
+        }
+
+        .metric-change-negative {
+            background: var(--color-amber-50);
+            color: var(--color-amber-600);
+        }
+
+        .metric-value {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: var(--color-slate-800);
+            margin-bottom: 0.25rem;
+        }
+
+        .metric-label {
+            font-size: 0.875rem;
+            color: var(--color-slate-600);
+        }
+
+        /* Features Section */
+        .features-section {
+            background: var(--color-slate-50);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--color-slate-800);
+            margin-bottom: 1rem;
+        }
+
+        .section-description {
+            font-size: 1.125rem;
+            color: var(--color-slate-600);
+            max-width: 42rem;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--color-white);
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow-xl);
+            transition: all 0.2s;
+        }
+
+        .feature-card:hover {
+            box-shadow: var(--shadow-xl);
+            transform: scale(1.02);
+        }
+
+        .feature-icon {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .feature-icon-blue {
+            background: linear-gradient(to bottom right, var(--color-blue-50), var(--color-indigo-50));
+            color: var(--color-blue-600);
+        }
+
+        .feature-icon-green {
+            background: linear-gradient(to bottom right, var(--color-green-50), #dcfce7);
+            color: var(--color-green-600);
+        }
+
+        .feature-icon-indigo {
+            background: linear-gradient(to bottom right, var(--color-indigo-50), #f3e8ff);
+            color: var(--color-indigo-600);
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-slate-800);
+            margin-bottom: 1rem;
+        }
+
+        .feature-description {
+            color: var(--color-slate-600);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Dashboard Section */
+        .dashboard-section {
+            background: var(--color-white);
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .page-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--color-slate-800);
+            margin-bottom: 0.5rem;
+        }
+
+        .page-description {
+            font-size: 1.125rem;
+            color: var(--color-slate-600);
+        }
+
+        .dashboard-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .time-select {
+            background: linear-gradient(to right, var(--color-blue-600), var(--color-indigo-600));
+            color: var(--color-white);
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 500;
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .kpi-card {
+            background: var(--color-white);
+            border: 1px solid var(--color-slate-200);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* AI Features Section */
+        .ai-section {
+            background: var(--color-slate-50);
+        }
+
+        .ai-features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .ai-feature-card {
+            background: var(--color-white);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.2s;
+        }
+
+        .ai-feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .ai-icon {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .ai-icon-blue {
+            background: var(--color-blue-50);
+            color: var(--color-blue-600);
+        }
+
+        .ai-icon-green {
+            background: var(--color-green-50);
+            color: var(--color-green-600);
+        }
+
+        .ai-icon-indigo {
+            background: var(--color-indigo-50);
+            color: var(--color-indigo-600);
+        }
+
+        .ai-metrics {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .ai-metric {
+            background: var(--color-slate-50);
+            color: var(--color-slate-600);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* Chat Interface */
+        .chat-interface {
+            background: var(--color-white);
+            border-radius: 1rem;
+            border: 1px solid var(--color-slate-200);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .chat-messages {
+            padding: 1.5rem;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .message {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .message-avatar {
+            width: 2rem;
+            height: 2rem;
+            background: var(--color-blue-600);
+            color: var(--color-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .message-content {
+            background: var(--color-slate-50);
+            padding: 0.75rem 1rem;
+            border-radius: 1rem;
+            max-width: 80%;
+        }
+
+        .chat-input-container {
+            display: flex;
+            padding: 1rem;
+            border-top: 1px solid var(--color-slate-200);
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--color-slate-200);
+            border-radius: 0.5rem;
+            margin-right: 0.5rem;
+        }
+
+        .chat-send {
+            background: var(--color-blue-600);
+            color: var(--color-white);
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            cursor: pointer;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--color-white);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-benefits {
+            margin-top: 2rem;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+            color: var(--color-slate-600);
+        }
+
+        .benefit-item svg {
+            color: var(--color-green-600);
+        }
+
+        .contact-form-container {
+            background: var(--color-slate-50);
+            border-radius: 1rem;
+            padding: 2rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            color: var(--color-slate-700);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--color-slate-300);
+            border-radius: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-blue-600);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(to right, var(--color-blue-600), var(--color-indigo-600));
+            color: var(--color-white);
+        }
+
+        .cta-content {
+            text-align: center;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-description {
+            font-size: 1.25rem;
+            color: #bfdbfe;
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--color-slate-800);
+            color: var(--color-white);
+            padding: 3rem 0;
+        }
+
+        .footer-content {
+            text-align: center;
+        }
+
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-description {
+            color: #94a3b8;
+            margin-bottom: 2rem;
+            max-width: 32rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-copyright {
+            color: #64748b;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .dashboard-header {
+                flex-direction: column;
+            }
+
+            .cta-title {
+                font-size: 2rem;
+            }
+
+            .cta-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <div class="brand-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon>
+                    </svg>
+                    <div class="brand-dot"></div>
+                </div>
+                <div class="brand-text">
+                    <span class="brand-name">StellarOne Health</span>
+                    <span class="brand-tagline">AI-Powered RCM Platform</span>
+                </div>
+            </div>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#dashboard" class="nav-link">Dashboard</a></li>
+                <li><a href="#ai-features" class="nav-link">AI Features</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button class="btn btn-primary" onclick="showSection('contact')">Request Demo</button>
+                <button class="nav-toggle" id="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="section hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <!-- Status Badge -->
+                    <div class="status-badge">
+                        <div class="status-dot"></div>
+                        <span>Live Platform • 500+ Healthcare Providers</span>
+                    </div>
+
+                    <h1 class="hero-title">
+                        Healthcare Revenue
+                        <br>
+                        <span class="text-gradient">Made Simple</span>
+                    </h1>
+                    
+                    <p class="hero-description">
+                        The only RCM platform that automates claims, reduces denials by 95%, 
+                        and gets you paid faster. Built specifically for modern healthcare providers.
+                    </p>
+
+                    <!-- Action Buttons -->
+                    <div class="hero-actions">
+                        <button class="btn btn-primary btn-large" onclick="showSection('dashboard')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="5,3 19,12 5,21"></polygon>
+                            </svg>
+                            Try Live Dashboard
+                        </button>
+                        <button class="btn btn-outline btn-large" onclick="showSection('ai-features')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-4A2.5 2.5 0 0 1 9.5 2Z"></path>
+                            </svg>
+                            Explore AI Features
+                        </button>
+                    </div>
+
+                    <!-- Live Metrics -->
+                    <div class="metrics-grid">
+                        <div class="metric-card">
+                            <div class="metric-header">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="metric-icon metric-icon-green">
+                                    <polyline points="22,12 18,12 15,21 9,3 6,12 2,12"></polyline>
+                                </svg>
+                                <span class="metric-change metric-change-positive">+12%</span>
+                            </div>
+                            <div class="metric-value">99.2%</div>
+                            <div class="metric-label">Claim Accuracy</div>
+                        </div>
+                        
+                        <div class="metric-card">
+                            <div class="metric-header">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="metric-icon metric-icon-blue">
+                                    <line x1="12" y1="1" x2="12" y2="23"></line>
+                                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                                </svg>
+                                <span class="metric-change metric-change-positive">+18%</span>
+                            </div>
+                            <div class="metric-value">$2.8M</div>
+                            <div class="metric-label">Monthly Revenue</div>
+                        </div>
+                        
+                        <div class="metric-card">
+                            <div class="metric-header">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="metric-icon metric-icon-indigo">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14,2 14,8 20,8"></polyline>
+                                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                                </svg>
+                                <span class="metric-change metric-change-positive">+25%</span>
+                            </div>
+                            <div class="metric-value">15.8K</div>
+                            <div class="metric-label">Claims/Month</div>
+                        </div>
+                        
+                        <div class="metric-card">
+                            <div class="metric-header">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="metric-icon metric-icon-amber">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12,6 12,12 16,14"></polyline>
+                                </svg>
+                                <span class="metric-change metric-change-negative">-22%</span>
+                            </div>
+                            <div class="metric-value">18.5</div>
+                            <div class="metric-label">Collection Days</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="section features-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Everything You Need in One Platform</h2>
+                    <p class="section-description">
+                        From AI-powered claim validation to predictive analytics, 
+                        we've built every tool healthcare providers need to maximize revenue.
+                    </p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon feature-icon-blue">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-4A2.5 2.5 0 0 1 9.5 2Z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">AI-Powered Automation</h3>
+                        <p class="feature-description">
+                            Smart claim validation, automated denial management, and predictive revenue insights 
+                            powered by advanced AI algorithms.
+                        </p>
+                        <button class="btn btn-outline" onclick="showSection('ai-features')">
+                            Explore AI Features
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12,5 19,12 12,19"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon feature-icon-green">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="22,12 18,12 15,21 9,3 6,12 2,12"></polyline>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Real-Time Analytics</h3>
+                        <p class="feature-description">
+                            Comprehensive dashboards with live KPIs, denial tracking, payer performance, 
+                            and revenue optimization insights.
+                        </p>
+                        <button class="btn btn-outline" onclick="showSection('dashboard')">
+                            View Dashboard
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12,5 19,12 12,19"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="feature-card">
+                        <div class="feature-icon feature-icon-indigo">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Complete RCM Suite</h3>
+                        <p class="feature-description">
+                            From patient registration to final payment collection, manage your entire 
+                            revenue cycle in one integrated platform.
+                        </p>
+                        <button class="btn btn-outline" onclick="showSection('contact')">
+                            Learn More
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12,5 19,12 12,19"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="section dashboard-section hidden">
+            <div class="container">
+                <div class="dashboard-header">
+                    <div>
+                        <h1 class="page-title">RCM Overview Dashboard</h1>
+                        <p class="page-description">Real-time revenue cycle monitoring</p>
+                    </div>
+                    <div class="dashboard-controls">
+                        <select id="time-period" class="time-select" onchange="updateKPIs()">
+                            <option value="30">Last 30 Days</option>
+                            <option value="90">Last 90 Days</option>
+                            <option value="365">Last Year</option>
+                        </select>
+                        <button class="btn btn-outline">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7,10 12,15 17,10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            Export Report
+                        </button>
+                    </div>
+                </div>
+
+                <div class="kpi-grid" id="kpi-grid">
+                    <!-- KPI cards will be populated by JavaScript -->
+                </div>
+
+                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; margin-top: 3rem;">
+                    <div style="background: white; border-radius: 1rem; padding: 2rem; box-shadow: var(--shadow-lg);">
+                        <h3 style="margin-bottom: 1rem; color: var(--color-slate-800);">Revenue Trend</h3>
+                        <div style="height: 300px; background: var(--color-slate-50); border-radius: 0.5rem; display: flex; align-items: center; justify-content: center; color: var(--color-slate-600);">
+                            <p>Interactive revenue chart would be displayed here</p>
+                        </div>
+                    </div>
+
+                    <div style="background: white; border-radius: 1rem; padding: 2rem; box-shadow: var(--shadow-lg);">
+                        <h3 style="margin-bottom: 1rem; color: var(--color-slate-800);">Recent Activity</h3>
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <div style="width: 8px; height: 8px; background: var(--color-green-600); border-radius: 50%;"></div>
+                                <div>
+                                    <p style="font-weight: 500; color: var(--color-slate-800);">Claim CLM-2024-001847 approved</p>
+                                    <span style="font-size: 0.875rem; color: var(--color-slate-600);">2 minutes ago</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <div style="width: 8px; height: 8px; background: var(--color-amber-600); border-radius: 50%;"></div>
+                                <div>
+                                    <p style="font-weight: 500; color: var(--color-slate-800);">Denial rate increased by 0.5%</p>
+                                    <span style="font-size: 0.875rem; color: var(--color-slate-600);">15 minutes ago</span>
+                                </div>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 1rem;">
+                                <div style="width: 8px; height: 8px; background: var(--color-blue-600); border-radius: 50%;"></div>
+                                <div>
+                                    <p style="font-weight: 500; color: var(--color-slate-800);">Monthly report generated</p>
+                                    <span style="font-size: 0.875rem; color: var(--color-slate-600);">1 hour ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Features Section -->
+        <section id="ai-features" class="section ai-section hidden">
+            <div class="container">
+                <div class="section-header">
+                    <h1 class="page-title">AI-Powered Features</h1>
+                    <p class="page-description">Intelligent automation for healthcare revenue cycle management</p>
+                </div>
+
+                <div class="ai-features-grid">
+                    <div class="ai-feature-card">
+                        <div class="ai-icon ai-icon-blue">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-4A2.5 2.5 0 0 1 9.5 2Z"></path>
+                            </svg>
+                        </div>
+                        <h3>Stellar.AI Assistant</h3>
+                        <p>24/7 conversational AI for instant RCM support and guidance</p>
+                        <div class="ai-metrics">
+                            <span class="ai-metric">99.5% accuracy</span>
+                            <span class="ai-metric">2s response time</span>
+                        </div>
+                    </div>
+
+                    <div class="ai-feature-card">
+                        <div class="ai-icon ai-icon-green">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9,11 12,14 22,4"></polyline>
+                                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                            </svg>
+                        </div>
+                        <h3>Smart Claim Validation</h3>
+                        <p>AI-powered accuracy verification with 99%+ precision</p>
+                        <div class="ai-metrics">
+                            <span class="ai-metric">95% denial reduction</span>
+                            <span class="ai-metric">Real-time validation</span>
+                        </div>
+                    </div>
+
+                    <div class="ai-feature-card">
+                        <div class="ai-icon ai-icon-indigo">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="22,12 18,12 15,21 9,3 6,12 2,12"></polyline>
+                            </svg>
+                        </div>
+                        <h3>Predictive Analytics</h3>
+                        <p>AI-driven forecasting and performance optimization</p>
+                        <div class="ai-metrics">
+                            <span class="ai-metric">Future insights</span>
+                            <span class="ai-metric">Revenue optimization</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 4rem;">
+                    <h2 style="text-align: center; margin-bottom: 2rem; font-size: 2rem; font-weight: 700; color: var(--color-slate-800);">Try Our AI Assistant</h2>
+                    <div class="chat-interface">
+                        <div class="chat-messages" id="chat-messages">
+                            <div class="message">
+                                <div class="message-avatar">AI</div>
+                                <div class="message-content">
+                                    Hello! I'm Stellar.AI, your RCM assistant. How can I help optimize your revenue cycle today?
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chat-input-container">
+                            <input type="text" id="chat-input" placeholder="Ask me about claims, denials, or revenue optimization..." class="chat-input">
+                            <button onclick="sendMessage()" class="chat-send">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="22" y1="2" x2="11" y2="13"></line>
+                                    <polygon points="22,2 15,22 11,13 2,9"></polygon>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact-section hidden">
+            <div class="container">
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h1 class="page-title">Get Started Today</h1>
+                        <p class="page-description">
+                            Ready to transform your revenue cycle? Our team is here to help you get started with StellarOne Health.
+                        </p>
+                        
+                        <div class="contact-benefits">
+                            <div class="benefit-item">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9,11 12,14 22,4"></polyline>
+                                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                                </svg>
+                                <span>Free 30-day trial</span>
+                            </div>
+                            <div class="benefit-item">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9,11 12,14 22,4"></polyline>
+                                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                                </svg>
+                                <span>No setup fees</span>
+                            </div>
+                            <div class="benefit-item">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="9,11 12,14 22,4"></polyline>
+                                    <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                                </svg>
+                                <span>24/7 support</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-container">
+                        <form class="contact-form" id="contact-form" onsubmit="submitForm(event)">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName">First Name</label>
+                                    <input type="text" id="firstName" name="firstName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name</label>
+                                    <input type="text" id="lastName" name="lastName" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="organization">Healthcare Organization</label>
+                                <input type="text" id="organization" name="organization" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="4" placeholder="Tell us about your current RCM challenges..."></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-large btn-full">
+                                Request Demo
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12,5 19,12 12,19"></polyline>
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="section cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2 class="cta-title">Ready to Transform Your Revenue Cycle?</h2>
+                    <p class="cta-description">
+                        Join hundreds of healthcare providers who have increased their revenue by 60% with StellarOne.
+                    </p>
+                    <div class="cta-actions">
+                        <button class="btn btn-white btn-large" onclick="showSection('dashboard')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="13,2 3,14 12,14 11,22 21,10 12,10"></polygon>
+                            </svg>
+                            Start Free Trial
+                        </button>
+                        <button class="btn btn-outline-white btn-large" onclick="showSection('contact')">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                            Schedule Demo
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="brand-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"></polygon>
+                        </svg>
+                    </div>
+                    <span class="brand-name">StellarOne Health</span>
+                </div>
+                <p class="footer-description">
+                    Transforming healthcare revenue cycle management with AI-powered automation and insights.
+                </p>
+                <div class="footer-copyright">
+                    <p>&copy; 2025 StellarOne Health. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation functionality
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                if (section.id && section.id !== 'home') {
+                    section.classList.add('hidden');
+                }
+            });
+
+            // Show home section if going to home, otherwise hide it
+            const homeSection = document.getElementById('home');
+            if (sectionId === 'home') {
+                homeSection.classList.remove('hidden');
+            } else {
+                homeSection.classList.add('hidden');
+            }
+
+            // Show target section
+            const targetSection = document.getElementById(sectionId);
+            if (targetSection) {
+                targetSection.classList.remove('hidden');
+            }
+
+            // Update navigation active states
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + sectionId) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Dashboard KPI data
+        const kpiData = {
+            30: [
+                { title: 'Total Revenue', value: '$2,847,392', change: '+12.5%', icon: 'dollar-sign', color: 'blue' },
+                { title: 'Claims Processed', value: '15,847', change: '+8.2%', icon: 'file-text', color: 'green' },
+                { title: 'Denial Rate', value: '2.3%', change: '-45%', icon: 'trending-up', color: 'amber' },
+                { title: 'Avg Collection Time', value: '18.5 days', change: '-22%', icon: 'clock', color: 'indigo' }
+            ],
+            90: [
+                { title: 'Total Revenue', value: '$8,456,782', change: '+18.3%', icon: 'dollar-sign', color: 'blue' },
+                { title: 'Claims Processed', value: '47,234', change: '+12.7%', icon: 'file-text', color: 'green' },
+                { title: 'Denial Rate', value: '2.1%', change: '-52%', icon: 'trending-up', color: 'amber' },
+                { title: 'Avg Collection Time', value: '19.2 days', change: '-18%', icon: 'clock', color: 'indigo' }
+            ],
+            365: [
+                { title: 'Total Revenue', value: '$28,745,632', change: '+25.7%', icon: 'dollar-sign', color: 'blue' },
+                { title: 'Claims Processed', value: '186,943', change: '+19.4%', icon: 'file-text', color: 'green' },
+                { title: 'Denial Rate', value: '1.8%', change: '-67%', icon: 'trending-up', color: 'amber' },
+                { title: 'Avg Collection Time', value: '20.1 days', change: '-25%', icon: 'clock', color: 'indigo' }
+            ]
+        };
+
+        function updateKPIs() {
+            const period = document.getElementById('time-period').value;
+            const data = kpiData[period];
+            const kpiGrid = document.getElementById('kpi-grid');
+            
+            kpiGrid.innerHTML = data.map(kpi => `
+                <div class="kpi-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                        <div style="width: 2.5rem; height: 2.5rem; background: var(--color-${kpi.color}-50); border-radius: 0.5rem; display: flex; align-items: center; justify-content: center; color: var(--color-${kpi.color}-600);">
+                            ${getIconSVG(kpi.icon)}
+                        </div>
+                        <span style="font-size: 0.75rem; font-weight: 500; padding: 0.25rem 0.5rem; border-radius: 9999px; background: ${kpi.change.startsWith('+') ? 'var(--color-green-50)' : 'var(--color-amber-50)'}; color: ${kpi.change.startsWith('+') ? 'var(--color-green-600)' : 'var(--color-amber-600)'};">
+                            ${kpi.change}
+                        </span>
+                    </div>
+                    <div style="font-size: 1.875rem; font-weight: 700; color: var(--color-slate-800); margin-bottom: 0.25rem;">
+                        ${kpi.value}
+                    </div>
+                    <div style="font-size: 0.875rem; color: var(--color-slate-600);">
+                        ${kpi.title}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function getIconSVG(iconName) {
+            const icons = {
+                'dollar-sign': '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>',
+                'file-text': '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14,2 14,8 20,8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>',
+                'trending-up': '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22,12 18,12 15,21 9,3 6,12 2,12"></polyline></svg>',
+                'clock': '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12,6 12,12 16,14"></polyline></svg>'
+            };
+            return icons[iconName] || '';
+        }
+
+        // AI Chat functionality
+        function sendMessage() {
+            const input = document.getElementById('chat-input');
+            const messagesContainer = document.getElementById('chat-messages');
+            const message = input.value.trim();
+            
+            if (!message) return;
+
+            // Add user message
+            messagesContainer.innerHTML += `
+                <div class="message" style="justify-content: flex-end;">
+                    <div class="message-content" style="background: var(--color-blue-600); color: var(--color-white); margin-left: 20%;">
+                        ${message}
+                    </div>
+                    <div class="message-avatar" style="background: var(--color-slate-600);">YOU</div>
+                </div>
+            `;
+
+            // Clear input
+            input.value = '';
+
+            // Simulate AI response
+            setTimeout(() => {
+                const responses = [
+                    "I can help you optimize your claim processing workflow. Would you like me to analyze your current denial patterns?",
+                    "Based on industry data, I recommend focusing on prior authorization improvements to reduce denials by up to 30%.",
+                    "Your revenue cycle performance can be enhanced through automated eligibility verification. Let me show you the potential impact.",
+                    "I've identified several opportunities to accelerate your collections. Would you like to see a detailed analysis?"
+                ];
+                
+                const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+                
+                messagesContainer.innerHTML += `
+                    <div class="message">
+                        <div class="message-avatar">AI</div>
+                        <div class="message-content">
+                            ${randomResponse}
+                        </div>
+                    </div>
+                `;
+                
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }, 1000);
+
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        // Contact form submission
+        function submitForm(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            // Simulate form submission
+            const submitButton = event.target.querySelector('button[type="submit"]');
+            const originalText = submitButton.innerHTML;
+            
+            submitButton.innerHTML = 'Submitting...';
+            submitButton.disabled = true;
+            
+            setTimeout(() => {
+                alert('Thank you for your interest! Our team will contact you within 24 hours to schedule your demo.');
+                event.target.reset();
+                submitButton.innerHTML = originalText;
+                submitButton.disabled = false;
+            }, 2000);
+        }
+
+        // Navigation link click handlers
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                showSection(targetId);
+            });
+        });
+
+        // Chat input enter key handler
+        document.getElementById('chat-input').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Initialize dashboard KPIs
+        document.addEventListener('DOMContentLoaded', () => {
+            updateKPIs();
+        });
+
+        // Mobile navigation toggle
+        document.getElementById('nav-toggle').addEventListener('click', () => {
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+        });
+    </script>
+</body>
+</html>
