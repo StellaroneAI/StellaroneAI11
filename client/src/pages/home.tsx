@@ -1,289 +1,279 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Link } from "wouter";
-import { Play, Calendar, DollarSign, FileText, TrendingUp, Clock, Bot, Brain, Zap, Shield } from "lucide-react";
+import { Play, ArrowRight, Users, Zap, Star, CheckCircle, TrendingUp, DollarSign, FileText, Clock, Shield, Brain, Sparkles, Heart, Calendar } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative gradient-professional text-white overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-black/20 via-transparent to-purple-900/20"></div>
-        <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-400/10 rounded-full blur-3xl"></div>
-        </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
+      {/* Clean Modern Hero Section */}
+      <section className="relative pt-20 pb-24 px-4">
+        <div className="max-w-7xl mx-auto">
           <div className="text-center">
-            <div className="mb-6">
-              <span className="bg-white/10 backdrop-blur-sm border border-white/20 text-white px-4 py-2 rounded-full text-sm font-medium">
-                🚀 Trusted by 500+ Healthcare Providers
-              </span>
+            {/* Status Badge */}
+            <div className="inline-flex items-center gap-2 bg-green-50 border border-green-200 rounded-full px-4 py-2 mb-8 shadow-sm">
+              <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+              <span className="text-sm font-medium text-green-700">Live Platform • 500+ Healthcare Providers</span>
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold mb-8 leading-tight">
-              Next-Gen AI-Powered
+
+            <h1 className="text-5xl md:text-6xl font-bold text-slate-800 mb-6 leading-tight">
+              Healthcare Revenue
               <br />
-              <span className="text-gradient">
-                Revenue Cycle Management
-              </span>
+              <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Made Simple</span>
             </h1>
-            <p className="text-xl md:text-2xl text-blue-100 mb-12 max-w-4xl mx-auto leading-relaxed">
-              Building the most intelligent, transparent, and efficient RCM platform for India & US healthcare providers. 
-              <strong className="text-white">No money left on the table.</strong>
-            </p>
-            <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
-              <Button className="bg-white text-blue-900 hover:bg-gray-100 px-10 py-4 text-lg font-semibold professional-shadow-lg">
-                <Play className="mr-3 h-5 w-5" />
-                Watch Live Demo
-              </Button>
-              <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-blue-900 px-10 py-4 text-lg font-semibold">
-                <Calendar className="mr-3 h-5 w-5" />
-                Schedule Consultation
-              </Button>
-            </div>
             
-            {/* Trust Indicators */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center text-white/80">
-              <div>
-                <div className="text-3xl font-bold text-white mb-1">98%</div>
-                <div className="text-sm">First Pass Rate</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-white mb-1">$2.8M+</div>
-                <div className="text-sm">Revenue Processed</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-white mb-1">60%</div>
-                <div className="text-sm">Denial Reduction</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold text-white mb-1">24/7</div>
-                <div className="text-sm">AI Monitoring</div>
-              </div>
+            <p className="text-xl text-slate-600 mb-10 max-w-3xl mx-auto leading-relaxed">
+              The only RCM platform that automates claims, reduces denials by 95%, 
+              and gets you paid faster. Built specifically for modern healthcare providers.
+            </p>
+
+            {/* Working Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+              <Link to="/dashboard">
+                <Button size="lg" className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-4 text-lg rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200">
+                  <Play className="mr-2 h-5 w-5" />
+                  Try Live Dashboard
+                </Button>
+              </Link>
+              <Link to="/ai-features">
+                <Button variant="outline" size="lg" className="border-2 border-indigo-300 text-indigo-700 hover:bg-indigo-50 px-8 py-4 text-lg rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200">
+                  <Brain className="mr-2 h-5 w-5" />
+                  Explore AI Features
+                </Button>
+              </Link>
+            </div>
+
+            {/* Live Metrics Dashboard */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto mb-20">
+              <Card className="bg-white/80 backdrop-blur-sm border border-slate-200 shadow-lg hover:shadow-xl transition-all duration-200">
+                <CardContent className="p-6">
+                  <div className="flex items-center justify-between mb-3">
+                    <TrendingUp className="h-8 w-8 text-green-600" />
+                    <span className="text-xs text-green-600 bg-green-50 px-2 py-1 rounded-full font-medium">+12%</span>
+                  </div>
+                  <div className="text-2xl font-bold text-slate-800 mb-1">99.2%</div>
+                  <div className="text-sm text-slate-600">Claim Accuracy</div>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-white/80 backdrop-blur-sm border border-slate-200 shadow-lg hover:shadow-xl transition-all duration-200">
+                <CardContent className="p-6">
+                  <div className="flex items-center justify-between mb-3">
+                    <DollarSign className="h-8 w-8 text-blue-600" />
+                    <span className="text-xs text-blue-600 bg-blue-50 px-2 py-1 rounded-full font-medium">+18%</span>
+                  </div>
+                  <div className="text-2xl font-bold text-slate-800 mb-1">$2.8M</div>
+                  <div className="text-sm text-slate-600">Monthly Revenue</div>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-white/80 backdrop-blur-sm border border-slate-200 shadow-lg hover:shadow-xl transition-all duration-200">
+                <CardContent className="p-6">
+                  <div className="flex items-center justify-between mb-3">
+                    <FileText className="h-8 w-8 text-indigo-600" />
+                    <span className="text-xs text-indigo-600 bg-indigo-50 px-2 py-1 rounded-full font-medium">+25%</span>
+                  </div>
+                  <div className="text-2xl font-bold text-slate-800 mb-1">15.8K</div>
+                  <div className="text-sm text-slate-600">Claims/Month</div>
+                </CardContent>
+              </Card>
+              
+              <Card className="bg-white/80 backdrop-blur-sm border border-slate-200 shadow-lg hover:shadow-xl transition-all duration-200">
+                <CardContent className="p-6">
+                  <div className="flex items-center justify-between mb-3">
+                    <Clock className="h-8 w-8 text-amber-600" />
+                    <span className="text-xs text-amber-600 bg-amber-50 px-2 py-1 rounded-full font-medium">-22%</span>
+                  </div>
+                  <div className="text-2xl font-bold text-slate-800 mb-1">18.5</div>
+                  <div className="text-sm text-slate-600">Collection Days</div>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Key Metrics Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-blue-600 mb-2">98%</div>
-              <div className="text-gray-600">AI-Powered Accuracy</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-green-600 mb-2">60%</div>
-              <div className="text-gray-600">Smart Denial Reduction</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-orange-600 mb-2">95%</div>
-              <div className="text-gray-600">Intelligent Collection</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-blue-900 mb-2">80%</div>
-              <div className="text-gray-600">AI Task Automation</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* AI Features Section */}
-      <section className="py-20 bg-gradient-to-br from-purple-50 to-blue-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Key Features Section */}
+      <section className="py-20 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
-            <div className="flex items-center justify-center mb-6">
-              <Bot className="h-12 w-12 text-purple-600 mr-3" />
-              <h2 className="text-4xl font-bold text-blue-900">Powered by Stellar.AI</h2>
-            </div>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Experience the next generation of healthcare RCM with intelligent automation and predictive analytics
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">
+              Everything You Need in One Platform
+            </h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+              From AI-powered claim validation to predictive analytics, 
+              we've built every tool healthcare providers need to maximize revenue.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <Card className="bg-white shadow-lg hover:shadow-xl transition-shadow border-0">
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card className="bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-200 hover:scale-105">
               <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Bot className="h-8 w-8 text-purple-600" />
-                </div>
-                <h3 className="text-xl font-semibold mb-4">AI Assistant</h3>
-                <p className="text-gray-600 mb-4">24/7 conversational AI for real-time RCM support and guidance</p>
-                <Link href="/ai-features">
-                  <Button variant="outline" className="text-purple-600 border-purple-600 hover:bg-purple-50">
-                    Try Now
-                  </Button>
-                </Link>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-white shadow-lg hover:shadow-xl transition-shadow border-0">
-              <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
                   <Brain className="h-8 w-8 text-blue-600" />
                 </div>
-                <h3 className="text-xl font-semibold mb-4">Smart Analytics</h3>
-                <p className="text-gray-600 mb-4">Predictive insights and revenue optimization recommendations</p>
-                <Link href="/ai-features">
-                  <Button variant="outline" className="text-blue-600 border-blue-600 hover:bg-blue-50">
-                    Explore
+                <h3 className="text-xl font-bold text-slate-800 mb-4">AI-Powered Automation</h3>
+                <p className="text-slate-600 mb-6">
+                  Smart claim validation, automated denial management, and predictive revenue insights 
+                  powered by advanced AI algorithms.
+                </p>
+                <Link to="/ai-features">
+                  <Button variant="outline" className="group border-blue-300 text-blue-700 hover:bg-blue-50">
+                    Explore AI Features
+                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
               </CardContent>
             </Card>
 
-            <Card className="bg-white shadow-lg hover:shadow-xl transition-shadow border-0">
+            <Card className="bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-200 hover:scale-105">
               <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Zap className="h-8 w-8 text-green-600" />
+                <div className="w-16 h-16 bg-gradient-to-br from-green-100 to-emerald-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <TrendingUp className="h-8 w-8 text-green-600" />
                 </div>
-                <h3 className="text-xl font-semibold mb-4">Auto Validation</h3>
-                <p className="text-gray-600 mb-4">Intelligent claim validation with 99%+ accuracy rate</p>
-                <Link href="/ai-features">
-                  <Button variant="outline" className="text-green-600 border-green-600 hover:bg-green-50">
-                    Learn More
+                <h3 className="text-xl font-bold text-slate-800 mb-4">Real-Time Analytics</h3>
+                <p className="text-slate-600 mb-6">
+                  Comprehensive dashboards with live KPIs, denial tracking, payer performance, 
+                  and revenue optimization insights.
+                </p>
+                <Link to="/analytics">
+                  <Button variant="outline" className="group border-green-300 text-green-700 hover:bg-green-50">
+                    View Analytics
+                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
               </CardContent>
             </Card>
 
-            <Card className="bg-white shadow-lg hover:shadow-xl transition-shadow border-0">
+            <Card className="bg-white border-0 shadow-xl hover:shadow-2xl transition-all duration-200 hover:scale-105">
               <CardContent className="p-8 text-center">
-                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Shield className="h-8 w-8 text-orange-600" />
+                <div className="w-16 h-16 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <Shield className="h-8 w-8 text-indigo-600" />
                 </div>
-                <h3 className="text-xl font-semibold mb-4">Denial Prevention</h3>
-                <p className="text-gray-600 mb-4">AI-powered denial analysis and automated appeal generation</p>
-                <Link href="/ai-features">
-                  <Button variant="outline" className="text-orange-600 border-orange-600 hover:bg-orange-50">
-                    View Demo
+                <h3 className="text-xl font-bold text-slate-800 mb-4">Complete RCM Suite</h3>
+                <p className="text-slate-600 mb-6">
+                  From patient registration to final payment collection, manage your entire 
+                  revenue cycle in one integrated platform.
+                </p>
+                <Link to="/modules">
+                  <Button variant="outline" className="group border-indigo-300 text-indigo-700 hover:bg-indigo-50">
+                    View All Modules
+                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </Link>
               </CardContent>
             </Card>
-          </div>
-
-          <div className="text-center mt-12">
-            <Link href="/ai-features">
-              <Button className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-3 text-lg">
-                <Bot className="mr-2 h-5 w-5" />
-                Experience All AI Features
-              </Button>
-            </Link>
           </div>
         </div>
       </section>
 
-      {/* Dashboard Preview Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Social Proof Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-blue-900 mb-4">Comprehensive RCM Dashboard</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Monitor your entire revenue cycle from a single, intelligent dashboard powered by AI insights
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Trusted by Healthcare Leaders
+            </h2>
+            <p className="text-lg text-gray-600">
+              Join hundreds of healthcare providers who have transformed their revenue cycle
             </p>
           </div>
 
-          <div className="bg-white rounded-xl shadow-2xl overflow-hidden">
-            <div className="bg-blue-900 text-white p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <h3 className="text-xl font-semibold">RCM Overview Dashboard</h3>
-                  <p className="text-blue-200">Real-time revenue cycle monitoring</p>
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card className="border border-gray-200 shadow-sm">
+              <CardContent className="p-8">
+                <div className="flex items-center mb-4">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <Star key={star} className="h-5 w-5 text-yellow-400 fill-current" />
+                  ))}
                 </div>
-                <div className="flex items-center space-x-4">
-                  <select className="bg-blue-600 text-white px-4 py-2 rounded-lg">
-                    <option>Last 30 Days</option>
-                    <option>Last 90 Days</option>
-                    <option>Last Year</option>
-                  </select>
-                  <Button className="bg-green-600 hover:bg-green-700">
-                    Export
-                  </Button>
+                <p className="text-gray-600 mb-6">
+                  "StellarOne reduced our denial rate from 12% to under 2% in just 3 months. 
+                  The AI insights are incredible."
+                </p>
+                <div className="flex items-center">
+                  <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">
+                    AH
+                  </div>
+                  <div className="ml-3">
+                    <div className="font-semibold text-gray-900">Dr. Arun Hegde</div>
+                    <div className="text-sm text-gray-600">Apollo Hospitals</div>
+                  </div>
                 </div>
-              </div>
-            </div>
+              </CardContent>
+            </Card>
 
-            <div className="p-6">
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-                <Card className="bg-gradient-to-r from-blue-500 to-blue-600 text-white">
-                  <CardContent className="p-6">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <p className="text-blue-100 text-sm">Total Revenue</p>
-                        <p className="text-2xl font-bold">$2,847,392</p>
-                        <p className="text-blue-200 text-sm">+12.5% vs last month</p>
-                      </div>
-                      <DollarSign className="h-8 w-8 text-blue-200" />
-                    </div>
-                  </CardContent>
-                </Card>
-                <Card className="bg-gradient-to-r from-green-500 to-green-600 text-white">
-                  <CardContent className="p-6">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <p className="text-green-100 text-sm">Claims Processed</p>
-                        <p className="text-2xl font-bold">15,847</p>
-                        <p className="text-green-200 text-sm">+8.2% vs last month</p>
-                      </div>
-                      <FileText className="h-8 w-8 text-green-200" />
-                    </div>
-                  </CardContent>
-                </Card>
-                <Card className="bg-gradient-to-r from-orange-500 to-orange-600 text-white">
-                  <CardContent className="p-6">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <p className="text-orange-100 text-sm">Denial Rate</p>
-                        <p className="text-2xl font-bold">2.3%</p>
-                        <p className="text-orange-200 text-sm">-45% vs last month</p>
-                      </div>
-                      <TrendingUp className="h-8 w-8 text-orange-200" />
-                    </div>
-                  </CardContent>
-                </Card>
-                <Card className="bg-gradient-to-r from-purple-500 to-purple-600 text-white">
-                  <CardContent className="p-6">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <p className="text-purple-100 text-sm">Avg Collection Time</p>
-                        <p className="text-2xl font-bold">18.5 days</p>
-                        <p className="text-purple-200 text-sm">-22% vs last month</p>
-                      </div>
-                      <Clock className="h-8 w-8 text-purple-200" />
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
+            <Card className="border border-gray-200 shadow-sm">
+              <CardContent className="p-8">
+                <div className="flex items-center mb-4">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <Star key={star} className="h-5 w-5 text-yellow-400 fill-current" />
+                  ))}
+                </div>
+                <p className="text-gray-600 mb-6">
+                  "The automation saves us 40+ hours per week. Our collections improved by 
+                  60% within the first quarter."
+                </p>
+                <div className="flex items-center">
+                  <div className="w-10 h-10 bg-emerald-500 rounded-full flex items-center justify-center text-white font-bold">
+                    SM
+                  </div>
+                  <div className="ml-3">
+                    <div className="font-semibold text-gray-900">Sarah Miller</div>
+                    <div className="text-sm text-gray-600">Regional Medical Center</div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
 
-              <div className="text-center">
-                <Link href="/dashboard">
-                  <Button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3">
-                    View Full Dashboard
-                  </Button>
-                </Link>
-              </div>
-            </div>
+            <Card className="border border-gray-200 shadow-sm">
+              <CardContent className="p-8">
+                <div className="flex items-center mb-4">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <Star key={star} className="h-5 w-5 text-yellow-400 fill-current" />
+                  ))}
+                </div>
+                <p className="text-gray-600 mb-6">
+                  "Best RCM platform we've used. The AI assistant feels like having a 
+                  revenue cycle expert available 24/7."
+                </p>
+                <div className="flex items-center">
+                  <div className="w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold">
+                    RK
+                  </div>
+                  <div className="ml-3">
+                    <div className="font-semibold text-gray-900">Dr. Rajesh Kumar</div>
+                    <div className="text-sm text-gray-600">Max Healthcare</div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-blue-900 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold mb-4">Ready to Transform Your Revenue Cycle?</h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
-            Join leading healthcare providers who trust StellarOne for their revenue cycle management
+      <section className="py-20 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            Ready to Transform Your Revenue Cycle?
+          </h2>
+          <p className="text-xl text-blue-100 mb-10">
+            Join hundreds of healthcare providers who have increased their revenue by 60% with StellarOne.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3">
-              <Calendar className="mr-2 h-5 w-5" />
-              Schedule Demo
-            </Button>
-            <Button variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-3">
-              Contact Sales
-            </Button>
+            <Link to="/dashboard">
+              <Button size="lg" className="bg-white text-blue-600 hover:bg-slate-50 px-8 py-4 text-lg rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200">
+                <Zap className="mr-2 h-5 w-5" />
+                Start Free Trial
+              </Button>
+            </Link>
+            <Link to="/contact">
+              <Button variant="outline" size="lg" className="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-4 text-lg rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200">
+                <Calendar className="mr-2 h-5 w-5" />
+                Schedule Demo
+              </Button>
+            </Link>
           </div>
         </div>
       </section>

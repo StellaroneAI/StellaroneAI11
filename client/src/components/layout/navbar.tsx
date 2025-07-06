@@ -25,18 +25,18 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-white professional-shadow-lg sticky top-0 z-50 border-b border-gray-100">
+    <nav className="bg-white/95 backdrop-blur-sm shadow-lg sticky top-0 z-50 border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-18">
           <div className="flex items-center">
             <Link href="/" className="flex items-center group">
               <div className="relative">
                 <Star className="text-blue-600 text-2xl mr-3 group-hover:scale-110 transition-transform" />
-                <div className="absolute -top-1 -right-1 w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+                <div className="absolute -top-1 -right-1 w-2 h-2 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full"></div>
               </div>
               <div className="flex flex-col">
-                <span className="text-xl font-bold stellar-deep-blue">StellarOne Health</span>
-                <span className="text-xs stellar-gray font-medium">AI-Powered RCM Platform</span>
+                <span className="text-xl font-bold text-slate-800">StellarOne Health</span>
+                <span className="text-xs text-slate-600 font-medium">AI-Powered RCM Platform</span>
               </div>
             </Link>
             <div className="hidden md:block ml-12">
@@ -47,8 +47,8 @@ export default function Navbar() {
                     href={item.href}
                     className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                       isActive(item.href)
-                        ? "stellar-deep-blue bg-gradient-to-r from-blue-50 to-purple-50 professional-shadow"
-                        : "stellar-gray hover:stellar-primary hover:bg-gray-50"
+                        ? "text-blue-600 bg-gradient-to-r from-blue-50 to-indigo-50 shadow-sm"
+                        : "text-slate-600 hover:text-blue-600 hover:bg-slate-50"
                     }`}
                   >
                     {item.name}
@@ -58,9 +58,11 @@ export default function Navbar() {
             </div>
           </div>
           <div className="flex items-center space-x-4">
-            <Button className="gradient-professional text-white hover:opacity-90 transition-opacity px-6 py-2 font-medium">
-              Request Demo
-            </Button>
+            <Link to="/contact">
+              <Button className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-6 py-2 font-medium rounded-lg shadow-lg hover:shadow-xl transition-all duration-200">
+                Request Demo
+              </Button>
+            </Link>
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon" className="md:hidden">
@@ -76,8 +78,8 @@ export default function Navbar() {
                       onClick={() => setIsOpen(false)}
                       className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
                         isActive(item.href)
-                          ? "stellar-deep-blue bg-gradient-to-r from-blue-50 to-purple-50"
-                          : "stellar-gray hover:stellar-primary hover:bg-gray-50"
+                          ? "text-blue-600 bg-gradient-to-r from-blue-50 to-indigo-50"
+                          : "text-slate-600 hover:text-blue-600 hover:bg-slate-50"
                       }`}
                     >
                       {item.name}
