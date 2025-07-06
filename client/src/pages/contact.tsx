@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { apiRequest } from "@/lib/queryClient";
 import { Mail, Globe, MapPin, Bot, Zap, MessageSquare } from "lucide-react";
 
 export default function Contact() {
@@ -15,21 +17,58 @@ export default function Contact() {
     message: "",
   });
   const { toast } = useToast();
+  const queryClient = useQueryClient();
+
+  const contactMutation = useMutation({
+    mutationFn: async (data: typeof formData) => {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({
+          ...data,
+          requestType: "demo_request",
+        }),
+      });
+      if (!res.ok) throw new Error("Failed to submit");
+      return res.json();
+    },
+    onSuccess: () => {
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for your interest! We will contact you soon.",
+      });
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        organization: "",
+        message: "",
+      });
+      queryClient.invalidateQueries({ queryKey: ["/api/contact"] });
+    },
+    onError: (error) => {
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive",
+      });
+    },
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Implement actual form submission
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for your interest! We will contact you soon.",
-    });
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      organization: "",
-      message: "",
-    });
+    if (!formData.firstName || !formData.lastName || !formData.email) {
+      toast({
+        title: "Missing Information",
+        description: "Please fill in all required fields.",
+        variant: "destructive",
+      });
+      return;
+    }
+    contactMutation.mutate(formData);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -122,8 +161,12 @@ export default function Contact() {
                     required
                   />
                 </div>
-                <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700">
-                  Send Message
+                <Button 
+                  type="submit" 
+                  disabled={contactMutation.isPending}
+                  className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-50"
+                >
+                  {contactMutation.isPending ? "Sending..." : "Send Message"}
                 </Button>
               </form>
             </CardContent>

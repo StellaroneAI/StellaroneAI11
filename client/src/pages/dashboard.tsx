@@ -3,11 +3,41 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CustomLineChart, CustomPieChart } from "@/components/ui/charts";
 import { revenueData, claimStatusData, recentActivity } from "@/lib/mock-data";
-import { DollarSign, FileText, TrendingUp, Clock, Download } from "lucide-react";
+import { DollarSign, FileText, TrendingUp, Clock, Download, Loader2 } from "lucide-react";
+import { useQuery } from "@tanstack/react-query";
 import AiChat from "@/components/ai/ai-chat";
 import AiInsights from "@/components/ai/ai-insights";
 
 export default function Dashboard() {
+  // Fetch real data from APIs
+  const { data: metricsData, isLoading: metricsLoading } = useQuery({
+    queryKey: ["/api/metrics"],
+    queryFn: async () => {
+      const res = await fetch("/api/metrics", { credentials: "include" });
+      if (!res.ok) throw new Error("Failed to fetch metrics");
+      return res.json();
+    },
+  });
+
+  const { data: claimsData, isLoading: claimsLoading } = useQuery({
+    queryKey: ["/api/claims"],
+    queryFn: async () => {
+      const res = await fetch("/api/claims", { credentials: "include" });
+      if (!res.ok) throw new Error("Failed to fetch claims");
+      return res.json();
+    },
+  });
+
+  const { data: patientsData, isLoading: patientsLoading } = useQuery({
+    queryKey: ["/api/patients"],
+    queryFn: async () => {
+      const res = await fetch("/api/patients", { credentials: "include" });
+      if (!res.ok) throw new Error("Failed to fetch patients");
+      return res.json();
+    },
+  });
+
+  const isLoading = metricsLoading || claimsLoading || patientsLoading;
   const kpiData = [
     {
       title: "Total Revenue",
@@ -51,6 +81,17 @@ export default function Dashboard() {
         return <div className="w-2 h-2 bg-gray-500 rounded-full"></div>;
     }
   };
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="flex items-center space-x-2">
+          <Loader2 className="h-6 w-6 animate-spin text-blue-600" />
+          <span className="text-lg text-gray-600">Loading dashboard data...</span>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">

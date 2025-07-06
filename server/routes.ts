@@ -112,6 +112,50 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Analytics data endpoint
+  app.get("/api/analytics", async (req, res) => {
+    try {
+      const { tab } = req.query;
+      
+      // Sample analytics data based on tab
+      const analyticsData = {
+        revenue: [
+          { name: 'Jan', revenue: 720000, claims: 1200, denials: 45 },
+          { name: 'Feb', revenue: 760000, claims: 1300, denials: 38 },
+          { name: 'Mar', revenue: 800000, claims: 1400, denials: 42 },
+          { name: 'Apr', revenue: 825000, claims: 1450, denials: 35 },
+          { name: 'May', revenue: 870000, claims: 1500, denials: 32 },
+          { name: 'Jun', revenue: 892000, claims: 1550, denials: 28 },
+        ],
+        denials: [
+          { name: 'Missing Prior Authorization', value: 23 },
+          { name: 'Incorrect Coding', value: 18 },
+          { name: 'Duplicate Claim', value: 12 },
+          { name: 'Missing Documentation', value: 10 },
+          { name: 'Other', value: 37 },
+        ],
+        payers: [
+          { name: 'Blue Cross Blue Shield', performance: 98.2, paymentTime: 18 },
+          { name: 'Aetna', performance: 96.8, paymentTime: 22 },
+          { name: 'UnitedHealth', performance: 94.5, paymentTime: 25 },
+          { name: 'Cigna', performance: 95.1, paymentTime: 21 },
+          { name: 'Humana', performance: 93.8, paymentTime: 28 },
+        ],
+        services: [
+          { name: 'Cardiology Consultations', revenue: 234567 },
+          { name: 'Diagnostic Imaging', revenue: 189432 },
+          { name: 'Surgical Procedures', revenue: 156789 },
+          { name: 'Emergency Services', revenue: 145623 },
+          { name: 'Laboratory Services', revenue: 98765 },
+        ]
+      };
+
+      res.json(analyticsData);
+    } catch (error) {
+      res.status(500).json({ error: "Failed to fetch analytics data" });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }

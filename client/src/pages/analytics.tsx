@@ -3,16 +3,37 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CustomLineChart, CustomBarChart } from "@/components/ui/charts";
+import { useQuery } from "@tanstack/react-query";
 import { 
   revenueData, 
   denialReasonsData, 
   payerPerformanceData, 
   topServices 
 } from "@/lib/mock-data";
-import { TrendingUp, TrendingDown, DollarSign, FileText, Clock, Bot, Brain, Zap, BarChart3 } from "lucide-react";
+import { TrendingUp, TrendingDown, DollarSign, FileText, Clock, Bot, Brain, Zap, BarChart3, Loader2 } from "lucide-react";
 
 export default function Analytics() {
   const [selectedTab, setSelectedTab] = useState("revenue");
+  
+  // Fetch analytics data from API
+  const { data: analyticsData, isLoading } = useQuery({
+    queryKey: ["/api/analytics", selectedTab],
+    queryFn: async () => {
+      const res = await fetch(`/api/analytics?tab=${selectedTab}`, { 
+        credentials: "include" 
+      });
+      if (!res.ok) {
+        // Fallback to mock data if API fails
+        return {
+          revenue: revenueData,
+          denials: denialReasonsData,
+          payers: payerPerformanceData,
+          services: topServices
+        };
+      }
+      return res.json();
+    },
+  });
 
   const analyticsKPIs = [
     {

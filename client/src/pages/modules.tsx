@@ -5,7 +5,7 @@ import { moduleDetails } from "@/lib/mock-data";
 import { Link2, Bot, File, CreditCard, AlertCircle, Users, BarChart3 } from "lucide-react";
 
 export default function Modules() {
-  const [selectedModule, setSelectedModule] = useState<string | null>(null);
+  const [selectedModule, setSelectedModule] = useState<any>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const modules = [
@@ -96,8 +96,11 @@ export default function Modules() {
   ];
 
   const handleModuleClick = (moduleId: string) => {
-    setSelectedModule(moduleId);
-    setIsModalOpen(true);
+    const moduleData = moduleDetails[moduleId as keyof typeof moduleDetails];
+    if (moduleData) {
+      setSelectedModule(moduleData);
+      setIsModalOpen(true);
+    }
   };
 
   const handleCloseModal = () => {
