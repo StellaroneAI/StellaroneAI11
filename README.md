@@ -202,7 +202,7 @@ Technology leader specializing in AI/ML applications for healthcare, expert in s
 ### **Mukesh Krishani** — Co-Founder
 Industry expert
 
-- ### **Pavithra** — Co-Founder
+### **Pavithra** — Co-Founder
 Industry expert
 
 ### **Tharun Vishvak** — Co-Founder
