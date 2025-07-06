@@ -2,7 +2,6 @@ import { ResponsiveContainer, LineChart, Line, XAxis, YAxis, CartesianGrid, Tool
 
 interface ChartData {
   name: string;
-  value: number;
   [key: string]: any;
 }
 
@@ -32,9 +31,10 @@ interface PieChartProps {
   data: ChartData[];
   colors: string[];
   height?: number;
+  dataKey?: string;
 }
 
-export function CustomPieChart({ data, colors, height = 300 }: PieChartProps) {
+export function CustomPieChart({ data, colors, height = 300, dataKey = "value" }: PieChartProps) {
   return (
     <ResponsiveContainer width="100%" height={height}>
       <PieChart>
@@ -46,7 +46,7 @@ export function CustomPieChart({ data, colors, height = 300 }: PieChartProps) {
           label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
           outerRadius={80}
           fill="#8884d8"
-          dataKey="value"
+          dataKey={dataKey}
         >
           {data.map((entry, index) => (
             <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
