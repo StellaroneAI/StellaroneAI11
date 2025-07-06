@@ -30,8 +30,19 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Get revenue metrics
   app.get("/api/metrics", async (req, res) => {
     try {
+      const { period = "30" } = req.query;
       const metrics = await storage.getRevenueMetrics();
-      res.json(metrics);
+      
+      // Filter metrics based on time period
+      const periodDays = parseInt(period as string);
+      const startDate = new Date();
+      startDate.setDate(startDate.getDate() - periodDays);
+      
+      const filteredMetrics = metrics.filter(metric => 
+        new Date(metric.date) >= startDate
+      );
+      
+      res.json(filteredMetrics);
     } catch (error) {
       res.status(500).json({ error: "Failed to fetch metrics" });
     }
