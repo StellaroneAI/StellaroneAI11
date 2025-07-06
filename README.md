@@ -199,11 +199,14 @@ Healthcare entrepreneur with 15+ years in revenue cycle management and healthcar
 ### **Sarathkumar Mani** — Co-Founder & CTO
 Technology leader specializing in AI/ML applications for healthcare, expert in scalable healthcare platforms.
 
-- **Mukesh Krishan** — Co-Founder
-- 
-- **Pavithra** — Co-Founder
-- 
-- **Tharun Vishvak** — Co-Founder
+### **Mukesh Krishani** — Co-Founder
+Industry expert
+
+- ### **Pavithra** — Co-Founder
+Industry expert
+
+### **Tharun Vishvak** — Co-Founder
+Industry expert
 
 ---
 
