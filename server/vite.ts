@@ -67,26 +67,14 @@ export async function setupVite(app: Express, server: Server) {
   });
 }
 
-export function serveStatic(app: Express) {
-  const distPath = path.resolve(import.meta.dirname, "..", "dist", "client");
+import express from "express";
+import path from "path";
 
-  if (!fs.existsSync(distPath)) {
-    throw new Error(
-      `Could not find the build directory: ${distPath}. Please run 'npm run build' first.`
-    );
-  }
-
-  // Serve static files from dist/client
+export function serveStatic(app: express.Express) {
+  // Adjust path as needed if your directory structure is different
+  const distPath = path.join(__dirname, "../dist");
   app.use(express.static(distPath));
-
-  // Fallback to index.html for all other routes (SPA support)
-  app.use("*", (_req, res) => {
-    res.sendFile(path.resolve(distPath, "index.html"));
-
-    export default defineConfig({
-  build: {
-    outDir: "dist/client",
-  },
-});
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(distPath, "index.html"));
   });
 }
