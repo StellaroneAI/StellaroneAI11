@@ -71,8 +71,7 @@ import express from "express";
 import path from "path";
 
 export function serveStatic(app: express.Express) {
-  // Adjust path as needed if your directory structure is different
-  const distPath = path.join(__dirname, "../dist");
+  const distPath = path.resolve(__dirname, "../dist");
   app.use(express.static(distPath));
   app.get("*", (req, res) => {
     res.sendFile(path.join(distPath, "index.html"));
